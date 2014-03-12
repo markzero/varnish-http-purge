@@ -116,14 +116,14 @@ class VarnishPurger {
         }
 
         // Build a varniship
-        if ( !defined( 'VHP_VARNISH_IP' ) && VHP_VARNISH_IP ) {
+        if ( !defined( 'VHP_VARNISH_IP' ) ) {
             $varniship = get_option('vhp_varnish_ip');
         } else {
             $varniship = VHP_VARNISH_IP;
         }
 
         // If we made varniship, let it sail
-        if ( isset($varniship) ) {
+        if ( isset($varniship) && $varniship ) {
             $purgeme = $p['scheme'].'://'.$varniship.$p['path'].$pregex;
         } else {
             $purgeme = $p['scheme'].'://'.$p['host'].$p['path'].$pregex;
